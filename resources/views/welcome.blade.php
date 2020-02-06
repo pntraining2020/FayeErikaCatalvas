@@ -1,95 +1,92 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>Laravel</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <script type='text/javascript'>
+        function display_c(){
+            var refresh=1000; // Refresh rate in milli seconds
+            mytime=setTimeout('display_ct()',refresh)
             }
 
-            .full-height {
-                height: 100vh;
+            function display_ct() {
+            var x = new Date()
+            document.getElementById('ct').innerHTML = x;
+            display_c();
             }
+    </script>
+</head>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<body onload=display_ct();>
+<span id='ct' ></span>
+    <!-- Styles -->
+    <style>
+    .button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
 
-            .position-ref {
-                position: relative;
-            }
+    .clockIn {
+        background-color: #008CBA;
+    }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+    .start {
+        background-color: #4CAF50;
+    }
 
-            .content {
-                text-align: center;
-            }
+    .end {
+        background-color: #f44336;
+    }
 
-            .title {
-                font-size: 84px;
-            }
+    .break {
+        background-color: #e7e7e7;
+        color: black;
+    }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+    .clockOut {
+        background-color: #555555;
+    }
+    </style>
+</head>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+<body>
+    <div>
+        <select>
+        @foreach ($name as $names)
+            <option>{{ $names-> name }}</option>
+        @endforeach
+        </select>
+    <div>
+        <button class="button clockIn">CLOCK IN</button><input>
+        
+        <br><br>
+        <button class="button start">START</button>
+        <br>
+        <button class="button end">END</button>
+        <br><br>
+        <button class="button break">TAKE ANOTHER BREAK</button>
+        <br>
+        <button class="button clockOut">CLOCK OUT</button>
+    </div>
+    <div>
+        <p> TOTAL TIME WORKED:</p>
+        <p> HOURS LEFT BEFORE:</p>
+        <p> TOTAL BREAKS USED:</p>
+    </div>
+</body>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
 </html>
